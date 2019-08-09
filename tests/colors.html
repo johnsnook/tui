@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+@author John Snook
+@date May 5, 2018
+@license https://snooky.biz/site/license
+@copyright 2018 John Snook Consulting
+Description of colors
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="ntc.js"></script>
+        <script src="data.js"></script>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>code</th><th>#rrggbb</th><th>closest</th><th>Color</th><th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="here">
+
+            </tbody>
+        </table>
+        <script>
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+                var n_match = ntc.name(obj.hexString);
+                n_rgb = n_match[0]; // RGB value of closest match
+                n_name = n_match[1]; // Text string: Color name
+                n_exactmatch = n_match[2]; // True if exact color match
+
+                let line = '<tr><td>' + i + '</td><td>'
+                        + obj.hexString + '</td><td>'
+                        + n_rgb + '</td><td style="background-color:'
+                        + obj.hexString + '"></td><td>'
+                        + n_name + '</td></tr>';
+                $('tbody#here').append($(line));
+                //console.log(obj.id);
+            }
+
+        </script>
+
+    </body>
+</html>

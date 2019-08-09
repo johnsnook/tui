@@ -1,0 +1,13 @@
+{
+    "horizontal": "─",
+    "vertical": "│",
+    "topX": "┌",
+    "topMid": "┬",
+    "topRight": "┐",
+    "rightMid": "┤",
+    "bottomRight": "┘",
+    "bottomMid": "┴",
+    "bottomLeft": "└",
+    "leftMid": "├",
+    "cross": "┼"
+}

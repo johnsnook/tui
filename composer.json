@@ -1,0 +1,31 @@
+{
+    "name": "johnsnook/tui",
+    "description": "A framework to create console applications with UI elements",
+    "type": "library",
+    "keywords": ["tui", "console", "vbdos", "cui", "terminal", "console", "cli", "xterm"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Michael Snook",
+            "email": "jsnook@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "tui\\": ""
+        }
+    },
+    "bin": [
+        "tui"
+    ]
+}

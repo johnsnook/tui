@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+/**
+ * @author John Snook
+ * @date May 8, 2018
+ * @license https://snooky.biz/site/license
+ * @copyright 2018 John Snook Consulting
+ * Description of Tui
+ */
+//use johnsnook\tui\Tui;
+#use \johnsnook\tui\components\Program;
+defined('TUI_DEBUG') or define('TUI_DEBUG', true);
+require __DIR__ . '/Tui.php';
+
+if (file_exists($argv[1])) {
+    Tui::$program = require $argv[1];
+    $exitCode = Tui::$program->run();
+    exit($exitCode);
+} else {
+    die("Tui program configuration file not found: " . $argv[1]);
+}
+
