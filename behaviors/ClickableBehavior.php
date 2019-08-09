@@ -15,7 +15,7 @@ use \tui\events\ControlEvent;
 use \tui\elements\Element;
 use \tui\events\KeyPressEvent;
 use \tui\events\MouseEvent;
-use \tui\Tui;
+use Tui;
 
 /**
  * Signals interest in and provides method for ClickEvents

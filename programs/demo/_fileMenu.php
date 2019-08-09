@@ -12,7 +12,7 @@ use \tui\elements\menu\Menu;
 use \tui\elements\menu\MenuBar;
 use \tui\elements\menu\MenuBarItem;
 use \tui\elements\menu\Separator;
-use \tui\Tui;
+use Tui;
 use \tui\helpers\Format;
 
 /**

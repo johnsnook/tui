@@ -6,7 +6,7 @@
  * @license http://www.tuiframework.com/license/
  */
 
-namespace tui;
+namespace tui\base;
 
 use tui\base\InvalidArgumentException;
 use tui\base\InvalidConfigException;
@@ -22,7 +22,7 @@ defined('TUI_BEGIN_TIME') or define('TUI_BEGIN_TIME', microtime(true));
 /**
  * This constant defines the framework installation directory.
  */
-defined('TUI_PATH') or define('TUI_PATH', __DIR__);
+defined('TUI_PATH') or define('TUI_PATH', __DIR__ . '/src');
 /**
  * This constant defines whether the application should be in debug mode or not. Defaults to false.
  */

@@ -17,7 +17,7 @@ use \tui\helpers\Rectangle;
 use \tui\helpers\Screen;
 use \tui\events\ElementEvent;
 use \tui\events\ElementEvent;
-use \tui\Tui;
+use Tui;
 use tui\base\Component;
 
 /**

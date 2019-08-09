@@ -18,7 +18,7 @@ use \tui\components\Style;
 use \tui\helpers\Format;
 use \tui\behaviors\ClickableBehavior;
 use \tui\events\MouseEvent;
-use \tui\Tui;
+use Tui;
 
 /**
  * A vertical menu, used primarily as a drop down, but can be hosted by other

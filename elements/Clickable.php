@@ -13,7 +13,7 @@ use \tui\components\Style;
 use \tui\elements\Control;
 use \tui\events\KeyPressEvent;
 use \tui\events\MouseEvent;
-use \tui\Tui;
+use Tui;
 
 /**
  * Signals interest in and provides method for ClickEvents

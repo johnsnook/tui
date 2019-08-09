@@ -3,7 +3,7 @@
 namespace tui\controllers;
 
 use \tui\helpers\Format;
-use \tui\Tui;
+use Tui;
 use \tui\components\Observer;
 
 /**

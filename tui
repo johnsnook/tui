@@ -9,10 +9,18 @@
  * @copyright 2018 John Snook Consulting
  * Description of Tui
  */
-//use johnsnook\tui\Tui;
+//use Tui;
 #use \johnsnook\tui\components\Program;
 defined('TUI_DEBUG') or define('TUI_DEBUG', true);
-require __DIR__ . '/Tui.php';
+spl_autoload_register(function($className) {
+    //echo $className . PHP_EOL;
+
+    $className = str_ireplace('tui\\', '', $className);
+    $className = str_replace('\\', DIRECTORY_SEPARATOR, $className);
+    include_once $className . '.php';
+});
+include_once 'Tui.php';
+//print_r(get_declared_classes());
 
 if (file_exists($argv[1])) {
     Tui::$program = require $argv[1];

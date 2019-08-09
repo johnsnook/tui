@@ -12,17 +12,15 @@
  * @license http://www.tuiframework.com/license/
  */
 //namespace tui;
-require __DIR__ . '/BaseTui.php';
+//require __DIR__ . '/BaseTui.php';
 
 /**
  * Static class to provide services to all objects in the Tui app.
  */
-class Tui extends \tui\BaseTui {
+class Tui extends \tui\base\BaseTui {
 
 }
 
-spl_autoload_register(['Tui', 'autoload'], true, true);
-Tui::$classMap = require __DIR__ . '/classes.php';
 Tui::$container = new tui\di\Container();
 Tui::$observer = tui\components\Observer::getInstance();
 Tui::$styleSheet = require 'css.php';

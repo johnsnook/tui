@@ -16,7 +16,7 @@ use \tui\events\MouseEvent;
 use \tui\events\DragEvent;
 use \tui\helpers\Rectangle;
 use \tui\helpers\Keys;
-use \tui\Tui;
+use Tui;
 
 class DraggableBehavior extends \tui\base\Behavior {
 
