@@ -10,7 +10,10 @@
 use \tui\components\Style;
 use \tui\elements\Button;
 use \tui\elements\Program;
+use \tui\elements\StatusBar;
 use \tui\elements\window\Window;
+use \tui\events\KeyPressEvent;
+use \tui\events\MouseEvent;
 use \tui\helpers\Keys;
 use \tui\helpers\Format;
 
@@ -26,23 +29,23 @@ return new Program([
         'fgColor' => Format::xtermFgColor(21),
         #'bgPattern' => '  ░░▒▒▓▓▒▒░░'
         #'bgPattern' => ' ░▒▓▒░'
-        'bgPattern' => '░'
+        'bgPattern' => '░▒'
     ],
     'on ready' => function($event) {
         $event->sender->testWindow->open();
     },
-//    'observerConfig' => [
-//        'on *' => function($event) {
-//            $sb = Tui::$program->statusBar;
-//            if (is_a($event, KeyPressEvent::className())) {
-//                $sb->changeText($event->description);
-//            } elseif (is_a($event, MouseEvent::className())) {
-//                $sb->changeText($event->name . " X: {$event->point->left} Y: {$event->point->top}");
-//            } else {
-//                #$sb->changeText($event->name);
-//            }
-//        }
-//    ],
+    'observerConfig' => [
+        'on *' => function($event) {
+            $sb = Tui::$program->statusBar;
+            if (is_a($event, KeyPressEvent::className())) {
+                $sb->changeText($event->description);
+            } elseif (is_a($event, MouseEvent::className())) {
+                $sb->changeText($event->name . " X: {$event->point->left} Y: {$event->point->top}");
+            } else {
+                #$sb->changeText($event->name);
+            }
+        }
+    ],
     'exitKey' => Keys::CTRL_Q,
     'elements' => [
         'testWindow' => [
@@ -73,6 +76,11 @@ return new Program([
                     ]
                 ]
             ]
+        ],
+        'statusBar' => [
+            'class' => StatusBar::className(),
+            'text' => 'Demo running!',
+            'css' => ['bgColor' => Format::xtermBgColor(248), 'fgColor' => Format::FG_BLACK],
         ]
     ]]
 );
