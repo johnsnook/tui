@@ -501,16 +501,22 @@ class Element extends \tui\base\Component {
             return $this->location;
         } elseif ($this->style->positioning === Style::RELATIVE) {
             $element = $this;
+            \tui\helpers\Debug::log($this, [
+                'location' => $this->location
+            ]);
+
             $absolut = clone $this->location;
             while ($owner = $element->owner) {
-                $absolut->top += $owner->top - 1;
-                $absolut->left += $owner->left - 1;
+
+                $absolut->top += $owner->top; # - 1;
+                $absolut->left += $owner->left; # - 1;
+
                 if ($owner->style->positioning === Style::ABSOLUTE) {
                     break;
                 }
-                #$absolut->setPosition($owner->top + $absolut->top, $owner->left + $absolut->left);
                 $element = $owner;
             }
+            Debug::message('getAbsolutePosition $absolut: ' . json_encode($absolut));
             return $absolut;
         }
         Debug::log($this, [$this->style->css, $this->location]);
@@ -521,8 +527,9 @@ class Element extends \tui\base\Component {
      * @return Rectangle
      */
     public function getAbsoluteRectangle() {
-        $pos = $this->absolutePosition;
-        return new Rectangle($this->top, $this->left, $this->height, $this->width);
+        $absolutePosition = $this->absolutePosition;
+        return new Rectangle($absolutePosition->top, $absolutePosition->left,
+                $this->height, $this->width);
     }
 
     public function __toString() {

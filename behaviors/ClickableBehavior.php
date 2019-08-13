@@ -15,6 +15,7 @@ use \tui\events\ControlEvent;
 use \tui\elements\Element;
 use \tui\events\KeyPressEvent;
 use \tui\events\MouseEvent;
+use tui\helpers\Debug;
 use Tui;
 
 /**
@@ -108,12 +109,17 @@ class ClickableBehavior extends ControlBehavior {
      */
     public function mouseDownHandler(MouseEvent $event) {
         /**
-         * turn off any errant listeners incase the last mouse up happened
+         * turn off any errant listeners in case the last mouse up happened
          * offscreen or something
          */
+        #Debug::message(json_encode($this->owner));
+
         Tui::$observer->off(Observer::MOUSE_LEFT_UP, [$this, 'mouseUpHandler']);
         $rect = $this->owner->absoluteRectangle;
+        Debug::message('event:' . json_encode($event));
+        Debug::message('my rect:' . json_encode($rect));
         if ($rect->pointInMe($event->point)) {
+
             if (method_exists($this->owner, 'onMouseDown')) {
                 $this->owner->onMouseDown($event);
             }

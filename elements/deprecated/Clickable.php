@@ -85,7 +85,7 @@ class Clickable extends Control {
         $writ = $this->buffer->writeToRow($label, $y - 1, $x - 1);
 
         if ($this->id === 'fileMenuItem') {
-            Debug::log($this,[
+            Debug::log($this, [
                 '$x' => $x,
                 '$y' => $y,
                 '$writ' => $writ,

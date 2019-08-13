@@ -2,11 +2,6 @@
 
 rem -------------------------------------------------------------
 rem  Tui command line bootstrap script for Windows.
-rem
-rem  @author Qiang Xue <qiang.xue@gmail.com>
-rem  @link http://www.tuiframework.com/
-rem  @copyright Copyright (c) 2008 Tui Software LLC
-rem  @license http://www.tuiframework.com/license/
 rem -------------------------------------------------------------
 
 @setlocal

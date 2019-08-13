@@ -15,15 +15,16 @@ use \tui\helpers\Screen;
 
 class Debug {
 
-    const LOG_FILE = __DIR__ . '/../log/tui.log';
     const EOT = 'EOT';
     const BACKTRACE = 'backtrace';
+
+    public static $logFile;
 
     public static function log($object, $data = null) {
 
         $out = [];
         if ($data === self::EOT) {
-            file_put_contents(self::LOG_FILE, str_repeat('═', Screen::$width) . PHP_EOL, FILE_APPEND);
+            file_put_contents(self::$logFile, str_repeat('═', Screen::$width) . PHP_EOL, FILE_APPEND);
             return;
         }
         static $i = 0;
@@ -38,19 +39,23 @@ class Debug {
         $baseClass = explode('\\', debug_backtrace()[1]['class']);
         $out[] = self::getCaller() . '=>' . $baseClass[2] . '->' . debug_backtrace()[1]['function'] . '(' . implode(',', debug_backtrace()[1]['args']) . ')';
 
-        file_put_contents(self::LOG_FILE, implode("\t", $out) . PHP_EOL, FILE_APPEND);
+        file_put_contents(self::$logFile, implode("\t", $out) . PHP_EOL, FILE_APPEND);
         if ($data === true) {
-            file_put_contents(self::LOG_FILE, self::generateCallTrace() . PHP_EOL, FILE_APPEND);
+            file_put_contents(self::$logFile, self::generateCallTrace() . PHP_EOL, FILE_APPEND);
         } elseif ($data === self::BACKTRACE) {
             $backtrace = debug_backtrace();
             $data = json_encode($backtrace, JSON_PRETTY_PRINT + JSON_UNESCAPED_UNICODE);
-            file_put_contents(self::LOG_FILE, $data . PHP_EOL, FILE_APPEND);
+            file_put_contents(self::$logFile, $data . PHP_EOL, FILE_APPEND);
         } elseif (!is_null($data)) {
             if (is_array($data) || is_object($data)) {
                 $data = json_encode($data, JSON_PRETTY_PRINT + JSON_UNESCAPED_UNICODE);
             }
-            file_put_contents(self::LOG_FILE, $data . PHP_EOL, FILE_APPEND);
+            file_put_contents(self::$logFile, $data . PHP_EOL, FILE_APPEND);
         }
+    }
+
+    public static function message($message) {
+        file_put_contents(self::$logFile, $message . PHP_EOL, FILE_APPEND);
     }
 
     private static function generateCallTrace($includeFileInfo = false) {
