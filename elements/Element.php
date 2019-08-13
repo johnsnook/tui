@@ -501,10 +501,6 @@ class Element extends \tui\base\Component {
             return $this->location;
         } elseif ($this->style->positioning === Style::RELATIVE) {
             $element = $this;
-            \tui\helpers\Debug::log($this, [
-                'location' => $this->location
-            ]);
-
             $absolut = clone $this->location;
             while ($owner = $element->owner) {
 
@@ -516,10 +512,8 @@ class Element extends \tui\base\Component {
                 }
                 $element = $owner;
             }
-            Debug::message('getAbsolutePosition $absolut: ' . json_encode($absolut));
             return $absolut;
         }
-        Debug::log($this, [$this->style->css, $this->location]);
     }
 
     /**

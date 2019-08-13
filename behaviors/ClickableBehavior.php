@@ -135,14 +135,17 @@ class ClickableBehavior extends ControlBehavior {
      * @param MouseEvent $event The MouseEvent that triggered this method to be called
      */
     public function mouseUpHandler(MouseEvent $event) {
+        if (method_exists($this->owner, 'onMouseUp')) {
+            $this->owner->onMouseUp($event);
+        }
         $rect = $this->owner->absoluteRectangle;
-        if ($rect->pointInMe($event->point)) { //$this->pMouseDown && Boxy::pointInRectangle($event->point, $rect
-            if (method_exists($this->owner, 'onMouseUp')) {
-                $this->owner->onMouseUp($event);
-            }
+
+        if ($rect->pointInMe($event->point)) {
             $this->owner->trigger(self::CLICK_EVENT, new ControlEvent());
             $event->handled = true;
         }
+
+
         // detach ourself
         Tui::$observer->off(Observer::MOUSE_LEFT_UP, [$this, 'mouseUpHandler']);
     }
