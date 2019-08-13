@@ -1,2 +1,2 @@
-/nbproject
-/log
+/nbproject/**
+/log/*
